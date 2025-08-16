@@ -29,8 +29,8 @@ st.code(CHAVE_PIX, language="")
 
 st.markdown("🏦 **Banco:** " + BANCO_PIX)
 
-# Instagram
-st.markdown(f"[📲 Instagram: @adaoalvescostaneto]({INSTAGRAM_LINK})")
+# Instagram (sem o @)
+st.markdown(f"[📲 Instagram: adaoalvescostaneto]({INSTAGRAM_LINK})")
 
 # Contato
 st.markdown(f"📧 {EMAIL_CONTATO}  \n📱 {TELEFONE_CONTATO}")
