@@ -1,5 +1,4 @@
 import streamlit as st
-import pyperclip
 
 # Dados principais
 OBJETIVO = 45000.00
@@ -24,13 +23,14 @@ Desde já, agradeço de coração pela solidariedade.
 # Objetivo
 st.subheader(f"🎯 Objetivo: R$ {OBJETIVO:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."))
 
-# Chave PIX e botão de cópia
-st.markdown(f"💸 **Chave PIX:** `{CHAVE_PIX}`")
-st.markdown(f"🏦 **Banco:** {BANCO_PIX}")
+# Chave PIX com campo de cópia
+st.markdown("💸 **Chave PIX:**")
+st.code(CHAVE_PIX, language="")
 
-if st.button("📋 Copiar chave PIX"):
-    pyperclip.copy(CHAVE_PIX)
-    st.success("✅ Chave PIX copiada para a área de transferência!")
+st.markdown("🏦 **Banco:** " + BANCO_PIX)
+
+# Instrução para copiar
+st.info("📋 Para copiar a chave Pix, clique no campo acima e pressione Ctrl+C (ou toque e segure no celular).")
 
 # Instagram
 st.markdown(f"[📲 Instagram: @adaoalvescostaneto]({INSTAGRAM_LINK})")
@@ -44,4 +44,6 @@ st.caption(f"📅 Atualizado em: {DATA_ATUALIZACAO}")
 # Rodapé
 st.markdown("---")
 st.markdown("🔁 Compartilhe esta vaquinha e ajude a salvar uma vida!")
+
+
 
