@@ -29,9 +29,6 @@ st.code(CHAVE_PIX, language="")
 
 st.markdown("🏦 **Banco:** " + BANCO_PIX)
 
-# Instrução para copiar
-st.info("📋 Para copiar a chave Pix, clique no campo acima e pressione Ctrl+C (ou toque e segure no celular).")
-
 # Instagram
 st.markdown(f"[📲 Instagram: @adaoalvescostaneto]({INSTAGRAM_LINK})")
 
