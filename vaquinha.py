@@ -24,10 +24,27 @@ Desde já, agradeço de coração pela solidariedade.
 # Objetivo
 st.subheader(f"🎯 Objetivo: R$ {OBJETIVO:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."))
 
-# Chave PIX com campo de cópia
-st.markdown("**💸 Chave PIX:**")
-st.text_input("Clique e copie", CHAVE_PIX, disabled=True)
-st.markdown(f"**🏦 Banco:** {BANCO_PIX}")
+# Chave PIX com botão de cópia automática
+st.markdown(f"""
+    <div style="margin-top: 10px;">
+        <label style="font-weight: bold;">💸 Chave PIX:</label><br>
+        <input type="text" value="{CHAVE_PIX}" id="pixInput" readonly style="width: 300px; padding: 8px; font-size: 16px; margin-top: 5px;">
+        <button onclick="copyPix()" style="margin-left: 10px; padding: 8px; font-size: 16px;">📋 Copiar</button>
+    </div>
+    <div style="margin-top: 10px;">
+        <strong>🏦 Banco:</strong> {BANCO_PIX}
+    </div>
+
+    <script>
+    function copyPix() {{
+        var copyText = document.getElementById("pixInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // Para dispositivos móveis
+        document.execCommand("copy");
+        alert("✅ Chave PIX copiada: " + copyText.value);
+    }}
+    </script>
+""", unsafe_allow_html=True)
 
 # Instagram
 st.markdown(f"[📲 Instagram: @adaoalvescostaneto]({INSTAGRAM_LINK})")
