@@ -1,5 +1,5 @@
 import streamlit as st
-import datetime
+import pyperclip
 
 # Dados principais
 OBJETIVO = 45000.00
@@ -13,7 +13,7 @@ INSTAGRAM_LINK = "https://www.instagram.com/adao.alvescostaneto"
 # Título
 st.title("💚 Vaquinha Solidária - Adão Alves da Costa Neto")
 
-# Mensagem
+# Mensagem principal
 st.markdown("""
 Estou em estágio 5 de insuficiência renal, com apenas 10% da função dos meus rins.  
 Preciso com urgência de um transplante.  
@@ -24,27 +24,13 @@ Desde já, agradeço de coração pela solidariedade.
 # Objetivo
 st.subheader(f"🎯 Objetivo: R$ {OBJETIVO:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."))
 
-# Chave PIX com botão de cópia automática
-st.markdown(f"""
-    <div style="margin-top: 10px;">
-        <label style="font-weight: bold;">💸 Chave PIX:</label><br>
-        <input type="text" value="{CHAVE_PIX}" id="pixInput" readonly style="width: 300px; padding: 8px; font-size: 16px; margin-top: 5px;">
-        <button onclick="copyPix()" style="margin-left: 10px; padding: 8px; font-size: 16px;">📋 Copiar</button>
-    </div>
-    <div style="margin-top: 10px;">
-        <strong>🏦 Banco:</strong> {BANCO_PIX}
-    </div>
+# Chave PIX e botão de cópia
+st.markdown(f"💸 **Chave PIX:** `{CHAVE_PIX}`")
+st.markdown(f"🏦 **Banco:** {BANCO_PIX}")
 
-    <script>
-    function copyPix() {{
-        var copyText = document.getElementById("pixInput");
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); // Para dispositivos móveis
-        document.execCommand("copy");
-        alert("✅ Chave PIX copiada: " + copyText.value);
-    }}
-    </script>
-""", unsafe_allow_html=True)
+if st.button("📋 Copiar chave PIX"):
+    pyperclip.copy(CHAVE_PIX)
+    st.success("✅ Chave PIX copiada para a área de transferência!")
 
 # Instagram
 st.markdown(f"[📲 Instagram: @adaoalvescostaneto]({INSTAGRAM_LINK})")
